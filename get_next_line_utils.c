@@ -27,7 +27,17 @@ char	*gnl_strjoin(char const *s1, char const *s2)
 	return (join);
 }
 
-char	*ft_strcpy(char *dst, const char *src)
+size_t	gnl_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+char	*gnl_strcpy(char *dst, const char *src)
 {
 	int	i;
 
