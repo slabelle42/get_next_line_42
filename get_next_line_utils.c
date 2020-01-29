@@ -7,7 +7,7 @@ char	*gnl_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	join_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	join_len = gnl_strlen(s1) + gnl_strlen(s2) + 1;
 	if (!(join = malloc(sizeof(char) * join_len)))
 		return (NULL);
 	i = 0;

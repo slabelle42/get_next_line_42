@@ -13,7 +13,7 @@ int		get_next_line(int fd, char **line)
 		if (!(save = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 			return (-1);
 	}
-	while (nbytes = read(fd, buffer, BUFFER_SIZE))
+	while ((nbytes = read(fd, buffer, BUFFER_SIZE)))
 	{
 		buffer[nbytes] = '\0';
 		save = gnl_strjoin(save, buffer);
