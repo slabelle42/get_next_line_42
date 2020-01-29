@@ -8,5 +8,6 @@
 
 int     get_next_line(int fd, char **line);
 char	*gnl_strjoin(char const *s1, char const *s2);
+char	*ft_strcpy(char *dst, const char *src);
 
 #endif
