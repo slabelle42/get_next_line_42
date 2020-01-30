@@ -19,5 +19,6 @@ int		get_next_line(int fd, char **line)
 		save = gnl_strjoin(save, buffer);
 	}
 	gnl_strcpy(*line, save);
+	free(save);
 	return (1);
 }
