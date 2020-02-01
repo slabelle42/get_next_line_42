@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slabelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/01 18:37:14 by slabelle          #+#    #+#             */
+/*   Updated: 2020/02/01 18:37:16 by slabelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int		gnl_check_errors(int fd, char **line, char **save)
@@ -7,7 +19,7 @@ int		gnl_check_errors(int fd, char **line, char **save)
 	if (!*save)
 	{
 		if (!(*save = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-			return (-1);	
+			return (-1);
 	}
 	return (0);
 }
