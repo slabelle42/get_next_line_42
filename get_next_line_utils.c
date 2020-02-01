@@ -37,10 +37,15 @@ size_t	gnl_strlen(const char *str)
 	return (len);
 }
 
-char	*gnl_strcpy(char *dst, const char *src)
+char	*gnl_strdup(const char *src)
 {
-	int	i;
+	size_t	dst_len;
+	char	*dst;
+	int		i;
 
+	dst_len = ft_strlen(src) + 1;
+	if (!(dst = malloc(sizeof(char) * dst_len)))
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{
