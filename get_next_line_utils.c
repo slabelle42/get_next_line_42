@@ -43,7 +43,7 @@ char	*gnl_strdup(const char *src)
 	char	*dst;
 	int		i;
 
-	dst_len = ft_strlen(src) + 1;
+	dst_len = gnl_strlen(src) + 1;
 	if (!(dst = malloc(sizeof(char) * dst_len)))
 		return (NULL);
 	i = 0;

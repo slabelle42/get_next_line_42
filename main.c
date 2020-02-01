@@ -9,30 +9,33 @@ int		main(int ac, char **av)
 	int		ret;
 	char	*line;
 	int		fd;
-	int		fd2;
+//	int		fd2;
 
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		fd2 = open("text.txt", O_RDONLY);
+//		fd2 = open("text.txt", O_RDONLY);
 		ret = get_next_line(fd, &line);
 		printf("GNL returned -> %d\n", ret);
 		printf("Obtained line is: %s\n", line);
-		ret = get_next_line(fd2, &line);
-		printf("GNL returned -> %d\n", ret);
-		printf("Obtained line is: %s\n", line);
+//		ret = get_next_line(fd2, &line);
+//		printf("GNL returned -> %d\n", ret);
+//		printf("Obtained line is: %s\n", line);
+		printf("Test 1 -------------------------- end\n");		
 		ret = get_next_line(fd, &line);
 		printf("GNL returned -> %d\n", ret);
 		printf("Obtained line is: %s\n", line);
-		ret = get_next_line(fd2, &line);
-		printf("GNL returned -> %d\n", ret);
-		printf("Obtained line is: %s\n", line);
+//		ret = get_next_line(fd2, &line);
+//		printf("GNL returned -> %d\n", ret);
+//		printf("Obtained line is: %s\n", line);
+		printf("Test 2 -------------------------- end\n");		
 		ret = get_next_line(fd, &line);
 		printf("GNL returned -> %d\n", ret);
 		printf("Obtained line is: %s\n", line);
-		ret = get_next_line(fd2, &line);
-		printf("GNL returned -> %d\n", ret);
-		printf("Obtained line is: %s\n", line);
+//		ret = get_next_line(fd2, &line);
+//		printf("GNL returned -> %d\n", ret);
+//		printf("Obtained line is: %s\n", line);
+		printf("Test 3 -------------------------- end\n");		
 	}
 	return (0);
 }	

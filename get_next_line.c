@@ -18,7 +18,6 @@ int		get_next_line(int fd, char **line)
 		buffer[nbytes] = '\0';
 		save = gnl_strjoin(save, buffer);
 	}
-	gnl_strcpy(*line, save);
-	free(save);
+	*line = gnl_strdup(save);
 	return (1);
 }

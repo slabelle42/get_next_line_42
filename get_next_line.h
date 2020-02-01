@@ -3,7 +3,7 @@
 
 # include <string.h>
 # include <stdlib.h>
-# include <io.h> //unistd.h
+# include <unistd.h> //io.h
 
 # define BUFFER_SIZE 32
 
