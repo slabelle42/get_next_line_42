@@ -55,3 +55,20 @@ char	*gnl_strdup(const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
+
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	i;
+
+	if (!(sub = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	if (!(start > gnl_strlen(s)))
+	{
+		while (s[start] && i < len)
+			sub[i++] = s[start++];
+	}
+	sub[i] = '\0';
+	return (sub);
+}
