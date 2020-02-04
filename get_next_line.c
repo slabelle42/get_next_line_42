@@ -48,7 +48,6 @@ int		get_next_line(int fd, char **line)
 
 	if (gnl_verify_errors_malloc(fd, line, &save) == -1)
 		return (-1);
-	
 	save = gnl_join_and_free(fd, save);
 	i = 0;
 	if (save[i])
