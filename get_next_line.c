@@ -14,23 +14,23 @@
 
 char	*gnl_join_and_free(int fd, char *save)
 {
-	char			*to_free;
+	char			*to_free2;
 	char			buffer[BUFFER_SIZE + 1];
 	int				nbytes;
 
-	to_free = save;
+	to_free2 = save;
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)))
 	{
 		buffer[nbytes] = '\0';
 		save = gnl_strjoin(save, buffer);
 	}
-	free(to_free);
+	free(to_free2);
 	return (save);
 }
 
 int		gnl_verify_errors_malloc(int fd, char **line, char **save)
 {
-	if (fd < 0 || !line || BUFFER_SIZE < 1)
+	if (fd == -1 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!*save)
 	{
@@ -44,6 +44,7 @@ int		get_next_line(int fd, char **line)
 {
 	static char		*save;
 	int				i;
+	char			*to_free1;
 
 	if (gnl_verify_errors_malloc(fd, line, &save) == -1)
 		return (-1);
@@ -56,7 +57,9 @@ int		get_next_line(int fd, char **line)
 		if (i == 0)
 			*line = gnl_strdup("");
 		*line = gnl_substr(save, 0, i);
+		to_free1 = save;
 		save = &save[i + 1];
+		free(to_free1);
 		return (1);
 	}
 	*line = gnl_strdup("");
