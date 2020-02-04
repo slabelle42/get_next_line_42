@@ -30,7 +30,7 @@ char	*gnl_join_and_free(int fd, char *save)
 
 int		gnl_verify_errors_malloc(int fd, char **line, char **save)
 {
-	if (fd == -1 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!*save)
 	{
