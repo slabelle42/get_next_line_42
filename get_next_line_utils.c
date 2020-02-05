@@ -53,7 +53,7 @@ size_t	gnl_strlcpy(char *dst, const char *src, size_t size)
 	size_t	src_len;
 	size_t	i;
 
-	src_len = ft_strlen(src);
+	src_len = gnl_strlen(src);
 	if (size > 0)
 	{
 		i = 0;
