@@ -12,15 +12,6 @@
 
 #include "get_next_line.h"
 
-void	free_memory(char **to_free)
-{
-	if (to_free && *to_free)
-	{
-		free(*to_free);
-		*to_free = NULL;
-	}
-}
-
 char	*join_and_free(char *save, char *buffer)
 {
 	size_t			len_buffer;
@@ -38,7 +29,8 @@ char	*join_and_free(char *save, char *buffer)
 	if (save)
 	{
 		gnl_strlcpy(join, save, (len_save + 1));
-		free_memory(&save);
+		free(save);
+		save = NULL;
 	}
 	gnl_strlcpy((join + len_save), buffer, (len_buffer + 1));
 	return (join);
@@ -84,6 +76,7 @@ int		get_next_line(int fd, char **line)
 		*line = gnl_strdup(save);
 	else if (nbytes < 1)
 		*line = gnl_strdup("");
-	free_memory(&save);
+	free(save);
+	save = NULL;
 	return (nbytes);
 }
