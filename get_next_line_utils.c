@@ -12,31 +12,13 @@
 
 #include "get_next_line.h"
 
-char	*gnl_strjoin(char const *s1, char const *s2)
+char	*gnl_strchr(char const *s, int c)
 {
-	size_t	join_len;
-	char	*join;
-	int		i;
-	int		j;
-
-	join_len = gnl_strlen(s1) + gnl_strlen(s2) + 1;
-	if (!(join = malloc(sizeof(char) * join_len)))
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		join[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		join[i] = s2[j];
-		i++;
-		j++;
-	}
-	join[i] = '\0';
-	return (join);
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
 
 size_t	gnl_strlen(const char *str)
@@ -47,6 +29,42 @@ size_t	gnl_strlen(const char *str)
 	while (str[len])
 		len++;
 	return (len);
+}
+
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	i;
+
+	if (!(sub = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	if (!(start > gnl_strlen(s)))
+	{
+		while (s[start] && i < len)
+			sub[i++] = s[start++];
+	}
+	sub[i] = '\0';
+	return (sub);
+}
+
+size_t	gnl_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	src_len;
+	size_t	i;
+
+	src_len = ft_strlen(src);
+	if (size > 0)
+	{
+		i = 0;
+		while (src[i] && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (src_len);
 }
 
 char	*gnl_strdup(const char *src)
@@ -66,21 +84,4 @@ char	*gnl_strdup(const char *src)
 	}
 	dst[i] = '\0';
 	return (dst);
-}
-
-char	*gnl_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*sub;
-	size_t	i;
-
-	if (!(sub = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = 0;
-	if (!(start > gnl_strlen(s)))
-	{
-		while (s[start] && i < len)
-			sub[i++] = s[start++];
-	}
-	sub[i] = '\0';
-	return (sub);
 }
