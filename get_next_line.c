@@ -71,5 +71,10 @@ int		get_next_line(int fd, char **line)
 		if (is_line(&save, line))
 			return (1);
 	}
-	
+	if (save && *save)
+		*line = gnl_strdup(save);
+	else if (nbytes < 1)
+		*line = gnl_strdup("");
+	free(save);
+	return (0);
 }
