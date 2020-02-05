@@ -15,7 +15,7 @@
 
 # include <string.h>
 # include <stdlib.h>
-# include <unistd.h> //io.h
+# include <unistd.h>
 
 int		get_next_line(int fd, char **line);
 char	*gnl_strchr(char const *s, int c);
