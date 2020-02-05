@@ -12,29 +12,6 @@
 
 #include "get_next_line.h"
 
-char	*gnl_join_and_free(int fd, char *save)
-{
-	char			*to_free2;
-
-	to_free2 = save;
-
-	free(to_free2);
-	return (save);
-}
-
-int		gnl_verify_errors_malloc(int fd, char **line, char **save)
-{
-
-	if (!*save)
-	{
-		if (!(*save = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-			return (-1);
-	}
-	return (0);
-}
-
-// -----------------------------------------------------
-
 char	*join_and_free(char *save, char *buffer)
 {
 	size_t			len_buffer;
@@ -94,25 +71,5 @@ int		get_next_line(int fd, char **line)
 		if (is_line(&save, line))
 			return (1);
 	}
-
-// -----------------------------------------------------
-	if (gnl_verify_errors_malloc(fd, line, &save) == -1)
-		return (-1);
-
-	save = gnl_join_and_free(fd, save);
-	i = 0;
-	if (save[i])
-	{
-		while (save[i] && save[i] != '\n')
-			i++;
-		if (i == 0)
-			*line = gnl_strdup("");
-		*line = gnl_substr(save, 0, i);
-		to_free1 = save;
-		save = &save[i + 1];
-		free(to_free1);
-		return (1);
-	}
-	*line = gnl_strdup("");
-	return (0);
+	
 }
