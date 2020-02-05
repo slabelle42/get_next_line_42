@@ -21,7 +21,7 @@ void	free_memory(char **to_free)
 	}
 }
 
-char	*join_and_del(char *save, char *buffer)
+char	*join_and_free(char *save, char *buffer)
 {
 	size_t			len_buffer;
 	size_t			len_save;
