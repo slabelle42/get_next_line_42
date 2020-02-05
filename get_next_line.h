@@ -18,10 +18,10 @@
 # include <unistd.h> //io.h
 
 int		get_next_line(int fd, char **line);
-char	*ft_strchr(char const *s, int c);
+char	*gnl_strchr(char const *s, int c);
 size_t	gnl_strlen(const char *str);
 char	*gnl_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	gnl_strlcpy(char *dst, const char *src, size_t size);
 char	*gnl_strdup(const char *src);
 
 #endif
