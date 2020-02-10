@@ -74,7 +74,7 @@ int		get_next_line(int fd, char **line)
 	}
 	if (save && *save)
 		*line = gnl_strdup(save);
-	else if (nbytes < 1)
+	else if (nbytes == 0)
 		*line = gnl_strdup("");
 	free(save);
 	save = NULL;
