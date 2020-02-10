@@ -60,7 +60,8 @@ int		get_next_line(int fd, char **line)
 	int				nbytes;
 	char			buffer[BUFFER_SIZE + 1];
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1
+		|| read(fd, buffer, 0) < 0)
 		return (-1);
 	if (save && is_line(&save, line))
 		return (1);
