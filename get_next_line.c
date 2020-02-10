@@ -6,7 +6,7 @@
 /*   By: slabelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 18:37:14 by slabelle          #+#    #+#             */
-/*   Updated: 2020/02/01 18:37:16 by slabelle         ###   ########.fr       */
+/*   Updated: 2020/02/10 15:19:15 by slabelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*join_and_free(char *save, char *buffer)
 	return (join);
 }
 
-int 	is_line(char **save, char **line)
+int		is_line(char **save, char **line)
 {
 	char			*found;
 	size_t			end;
