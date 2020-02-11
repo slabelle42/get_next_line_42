@@ -70,10 +70,7 @@ int		get_next_line(int fd, char **line)
 
 	if (!(buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1)))
 		|| read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
-	{
-		free_and_null(&buffer);
 		return (-1);
-	}
 	if (save && line_saved(&save, line))
 		return (1);
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
@@ -86,7 +83,7 @@ int		get_next_line(int fd, char **line)
 	}
 	if (save && *save)
 		*line = gnl_strdup(save);
-	else if (nbytes == 0)
+	else if (nbytes  0)
 		*line = gnl_strdup("");
 	free_and_null(&buffer);
 	free_and_null(&save);
