@@ -83,7 +83,7 @@ int		get_next_line(int fd, char **line)
 	}
 	if (save && *save)
 		*line = gnl_strdup(save);
-	else if (nbytes  0)
+	else if (nbytes == 0)
 		*line = gnl_strdup("");
 	free_and_null(&buffer);
 	free_and_null(&save);
