@@ -68,9 +68,8 @@ int		get_next_line(int fd, char **line)
 	static char		*save;
 	int				nbytes;
 
-	if (!(buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1))))
-		return (-1);
-	if (read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
+	if (!(buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1)))
+		|| read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (save && is_line(&save, line))
 		return (1);
