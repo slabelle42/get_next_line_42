@@ -64,7 +64,7 @@ int		line_saved(char **save, char **line)
 
 int		get_next_line(int fd, char **line)
 {
-	char			*buffer;
+	static char		*buffer;
 	static char		*save;
 	int				nbytes;
 
