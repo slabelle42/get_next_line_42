@@ -21,7 +21,7 @@ void	free_and_null(char **to_free)
 	}
 }
 
-char	*join_and_free(char *save, char *buffer)
+char	*join_buffer(char *save, char *buffer)
 {
 	size_t			len_buffer;
 	size_t			len_save;
@@ -76,7 +76,7 @@ int		get_next_line(int fd, char **line)
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
-		if (!(save = join_and_free(save, buffer)))
+		if (!(save = join_buffer(save, buffer)))
 			return (-1);
 		if (is_line(&save, line))
 			return (1);
