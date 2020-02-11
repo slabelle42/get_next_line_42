@@ -44,7 +44,7 @@ char	*join_buffer(char *save, char *buffer)
 	return (join);
 }
 
-int		is_line(char **save, char **line)
+int		line_saved(char **save, char **line)
 {
 	char			*found;
 	size_t			end;
@@ -71,7 +71,7 @@ int		get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1)))
 		|| read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
-	if (save && is_line(&save, line))
+	if (save && line_saved(&save, line))
 		return (1);
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
