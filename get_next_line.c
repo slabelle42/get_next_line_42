@@ -78,7 +78,7 @@ int		get_next_line(int fd, char **line)
 		buffer[nbytes] = '\0';
 		if (!(save = join_buffer(save, buffer)))
 			return (-1);
-		if (is_line(&save, line))
+		if (line_saved(&save, line))
 			return (1);
 	}
 	if (save && *save)
