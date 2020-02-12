@@ -68,7 +68,7 @@ int		get_next_line(int fd, char **line)
 	static char		*save;
 	int				nbytes;
 
-	if (read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (save && line_saved(&save, line))
 		return (1);
