@@ -64,41 +64,26 @@ int		line_saved(char **save, char **line)
 
 int		get_next_line(int fd, char **line)
 {
-	char			*buffer;
+	char			*buffer[BUFFER_SIZE + 1];
 	static char		*save;
 	int				nbytes;
 
-	if (!(buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1))))
-		return (-1);
 	if (read(fd, buffer, 0) < 0 || !line || BUFFER_SIZE < 1)
-	{
-		free_and_null(&buffer);
 		return (-1);
-	}
 	if (save && line_saved(&save, line))
-	{
-		free_and_null(&buffer);
 		return (1);
-	}
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
 		if (!(save = join_buffer(save, buffer)))
-		{
-			free_and_null(&buffer);
 			return (-1);
-		}
 		if (line_saved(&save, line))
-		{
-			free_and_null(&buffer);
 			return (1);
-		}
 	}
 	if (save && *save)
 		*line = gnl_strdup(save);
 	else if (nbytes == 0)
 		*line = gnl_strdup("");
-	free_and_null(&buffer);
 	free_and_null(&save);
 	return (nbytes);
 }
