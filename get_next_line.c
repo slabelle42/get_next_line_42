@@ -64,11 +64,12 @@ int		line_saved(char **save, char **line)
 
 int		get_next_line(int fd, char **line)
 {
+	char			buffer[BUFFER_SIZE + 1];
 	static char		*save;
 	int				nbytes;
-	char			buffer[BUFFER_SIZE + 1];
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || BUFFER_SIZE > 8000000)
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || BUFFER_SIZE > 8000000
+		|| read(fd, buffer, 0) < 0)
 		return (-1);
 	if (save && line_saved(&save, line))
 		return (1);
