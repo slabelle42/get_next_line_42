@@ -68,7 +68,7 @@ int		get_next_line(int fd, char **line)
 	int				nbytes;
 	char			buffer[BUFFER_SIZE + 1];
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || BUFFER_SIZE > 8000000)
 		return (-1);
 	if (save && line_saved(&save, line))
 		return (1);
