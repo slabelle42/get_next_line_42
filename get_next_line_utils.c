@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*gnl_strchr(char const *s, int c)
+char	*ft_strchr(char const *s, int c)
 {
 	while (*s && *s != (char)c)
 		s++;
@@ -21,7 +21,7 @@ char	*gnl_strchr(char const *s, int c)
 	return (NULL);
 }
 
-size_t	gnl_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -31,7 +31,7 @@ size_t	gnl_strlen(const char *str)
 	return (len);
 }
 
-char	*gnl_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
@@ -39,7 +39,7 @@ char	*gnl_substr(char const *s, unsigned int start, size_t len)
 	if (!(sub = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
-	if (!(start > gnl_strlen(s)))
+	if (!(start > ft_strlen(s)))
 	{
 		while (s[start] && i < len)
 			sub[i++] = s[start++];
@@ -48,12 +48,12 @@ char	*gnl_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-size_t	gnl_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;
 
-	src_len = gnl_strlen(src);
+	src_len = ft_strlen(src);
 	if (size > 0)
 	{
 		i = 0;
@@ -67,7 +67,7 @@ size_t	gnl_strlcpy(char *dst, const char *src, size_t size)
 	return (src_len);
 }
 
-char	*gnl_strdup(const char *src)
+char	*ft_strdup(const char *src)
 {
 	size_t	dst_len;
 	char	*dst;
