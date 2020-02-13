@@ -76,7 +76,7 @@ int				get_next_line(int fd, char **line)
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
-		if (!(save = join_buffer(save[fd], buffer)))
+		if (!(save[fd] = join_buffer(save[fd], buffer)))
 			return (-1);
 		if (line_saved(&save[fd], line))
 			return (1);
