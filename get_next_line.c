@@ -65,25 +65,26 @@ static int		line_saved(char **save, char **line)
 int				get_next_line(int fd, char **line)
 {
 	char			buffer[BUFFER_SIZE + 1];
-	static char		*save;
+	static char		*save[MAX_FD];
 	int				nbytes;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
+	if (fd < 0 || fd > MAX_FD || !line || BUFFER_SIZE < 1
+		|| read(fd, buffer, 0) < 0)
 		return (-1);
-	if (save && line_saved(&save, line))
+	if (save && line_saved(&save[fd], line))
 		return (1);
 	while ((nbytes = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[nbytes] = '\0';
-		if (!(save = join_buffer(save, buffer)))
+		if (!(save = join_buffer(save[fd], buffer)))
 			return (-1);
-		if (line_saved(&save, line))
+		if (line_saved(&save[fd], line))
 			return (1);
 	}
-	if (save && *save)
-		*line = gnl_strdup(save);
+	if (save[fd] && *save[fd])
+		*line = gnl_strdup(save[fd]);
 	else if (nbytes == 0)
 		*line = gnl_strdup("");
-	free_and_null(&save);
+	free_and_null(&save[fd]);
 	return (nbytes);
 }
